@@ -1,0 +1,20 @@
+*,
+*::after,
+*::before {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: inherit;
+}
+
+html {
+	/* 1 rem should be 10 px making math conversion easier */
+	/* but for users with accessibility issues, this will override their default settings */
+	/* so we should use a percentage here. the default font size is 16px so for percentage  */
+	/* we can use 10/16 =  62.5% */
+	font-size: 62.5%;
+}
+
+body {
+	padding: 3rem;
+	box-sizing: border-box;
+}
