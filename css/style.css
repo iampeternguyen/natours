@@ -7,19 +7,30 @@ Dark green: #28b485
 
 */
 
-* {
+*,
+*::after,
+*::before {
 	margin: 0px;
 	padding: 0px;
-	box-sizing: border-box;
+	box-sizing: inherit;
+}
+
+html {
+	font-size: 62.5%;
+	/* now 1 rem = 10 px making math conversion easier */
+	/* but for users with accessibility issues, this will override their default settings */
+	/* so we should use a percentage here. the default font size is 16px so for percentage  */
+	/* we can use 10/16 =  62.5% */
 }
 
 body {
 	font-family: 'Lato', sans-serif;
 	font-weight: 400;
-	font-size: 16px;
+	font-size: 1.6rem;
 	line-height: 1.7;
 	color: #777;
-	padding: 30px;
+	padding: 3rem;
+	box-sizing: border-box;
 }
 
 .header {
@@ -34,8 +45,8 @@ body {
 
 .logo-box {
 	position: absolute;
-	top: 40px;
-	left: 40px;
+	top: 4rem;
+	left: 4rem;
 }
 
 .logo {
@@ -47,20 +58,22 @@ body {
 	top: 40%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	text-align: center;
 }
 
 .heading-primary {
 	color: white;
 	text-transform: uppercase;
+	margin-bottom: 6rem;
 	/* this fixes shaking in animation */
 	/* backface-visibility: hidden; */
 }
 
 .heading-primary-main {
 	display: block;
-	font-size: 60px;
+	font-size: 6rem;
 	font-weight: 400;
-	letter-spacing: 35px;
+	letter-spacing: 3.5rem;
 	animation-name: moveInLeft;
 	animation-duration: 0.7s;
 	animation-timing-function: ease-out;
@@ -68,20 +81,71 @@ body {
 
 .heading-primary-sub {
 	display: block;
-	font-size: 20px;
+	font-size: 2rem;
 	font-weight: 700;
-	letter-spacing: 17.4px;
+	letter-spacing: 1.75rem;
 	animation: moveInRight 0.7s ease-out;
+}
+
+.btn:link,
+.btn:visited {
+	text-transform: uppercase;
+	text-decoration: none;
+	display: inline-block;
+	border-radius: 10rem;
+	transition: all 0.1s;
+	position: relative;
+}
+
+.btn:hover {
+	transform: translateY(-0.3rem);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+	transform: translateY(-0.1rem);
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.btn-white {
+	background-color: #fff;
+	color: #777;
+	padding: 1.5rem 4rem;
+}
+
+.btn::after {
+	/* create an after element with same style of btn and put it behind orig element */
+	content: '';
+	display: inline-block;
+	height: 100%;
+	width: 100%;
+	border-radius: 100px;
+	/* abs pos is relative to the most recent parent element with relative positioning */
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	/* transition needs to be on the initial state */
+	transition: all 0.2s;
+}
+
+.btn-white::after {
+	background-color: #fff;
+}
+
+.btn:hover::after {
+	transform: scaleX(1.4) scaleY(1.6);
+	opacity: 0;
 }
 
 @keyframes moveInLeft {
 	0% {
 		opacity: 0;
-		transform: translateX(-100px);
+		transform: translateX(-10rem);
 	}
 
 	80% {
-		transform: translateX(10px);
+		transform: translateX(1rem);
 	}
 
 	100% {
@@ -93,11 +157,23 @@ body {
 @keyframes moveInRight {
 	0% {
 		opacity: 0;
-		transform: translateX(100px);
+		transform: translateX(10rem);
 	}
 
 	80% {
-		transform: translateX(-10px);
+		transform: translateX(-1rem);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translate(0);
+	}
+}
+
+@keyframes moveInButton {
+	0% {
+		opacity: 0;
+		transform: translateY(10rem);
 	}
 
 	100% {
