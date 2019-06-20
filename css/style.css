@@ -557,6 +557,11 @@ body {
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s; }
+  @supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+    .popup {
+      background-color: rgba(0, 0, 0, 0.2);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px); } }
   .popup:target {
     opacity: 1;
     visibility: visible; }
@@ -640,13 +645,17 @@ body {
     width: 15rem;
     height: 15rem;
     float: left;
-    -webkit-shape-outside: circle(50% at 50% 50%);
-    shape-outside: circle(50% at 50% 50%);
-    -webkit-clip-path: circle(50% at 50% 50%);
-    clip-path: circle(50% at 50% 50%);
+    border-radius: 50%;
     transform: translateX(-3rem) skewX(12deg);
     position: relative;
     overflow: hidden; }
+    @supports (clip-path: polygon(0 0)) or (clip-path: polygon(0 0)) {
+      .story__shape {
+        border-radius: none;
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%);
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%); } }
     @media (max-width: 37.5em) {
       .story__shape {
         transform: translateX(-3rem) skewX(0); } }
@@ -771,13 +780,19 @@ body {
     width: calc(2 * 6rem + (3 * ((100% - 3 * 6rem) / 4))); }
 
 .header {
-  height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg");
+  height: 85vh;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero-small.jpg");
   background-size: cover;
   background-position: top;
-  position: relative;
-  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%); }
+  position: relative; }
+  @supports (clip-path: polygon(0 0)) or (clip-path: polygon(0 0)) {
+    .header {
+      height: 95vh;
+      clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%); } }
+  @media (min-resolution: 192dpi) and (min-width: 37.5em), (min-width: 125em) {
+    .header {
+      background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg"); } }
   @media (max-width: 37.5em) {
     .header {
       clip-path: polygon(0 0, 100% 0, 100% 87%, 0 100%);
@@ -828,8 +843,8 @@ body {
   width: 6.99rem;
   border-radius: 50%;
   position: fixed;
-  top: 6.5rem;
-  right: 6.5rem;
+  top: 6rem;
+  right: 6rem;
   background-image: radial-gradient(#7ed56f, #28b485);
   z-index: 1000;
   transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1); }
