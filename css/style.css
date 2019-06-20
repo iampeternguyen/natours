@@ -1,3 +1,17 @@
+/*
+	Pixels
+	0-600: 			Phone -> phone
+	600-900:		Tablet portrait -> tablet
+	900-1200:		Tablet landscape -> tabletLandscape
+	1200-1800:	desktop [normal styles]
+	1800+				Big desktop -> bigDesktop
+
+	Here we'll use em because we want to respond to user browser font size settings
+
+	How to make the website responsive?
+	base + typography > general layout + grid > page layout > components
+
+*/
 @keyframes moveInLeft {
   0% {
     opacity: 0;
@@ -39,6 +53,15 @@ html {
   /* so we should use a percentage here. the default font size is 16px so for percentage  */
   /* we can use 10/16 =  62.5% */
   font-size: 62.5%; }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
 
 body {
   padding: 3rem;

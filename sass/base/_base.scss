@@ -12,6 +12,21 @@ html {
 	/* so we should use a percentage here. the default font size is 16px so for percentage  */
 	/* we can use 10/16 =  62.5% */
 	font-size: 62.5%;
+
+	@include manageStylesFor(tabletLandscape) {
+		// adjust 1rem to 9px. 9/16 =
+		font-size: 56.25%;
+	}
+
+	@include manageStylesFor(tablet) {
+		// adjust 1rem to 8px. 8/16 =
+		font-size: 50%;
+	}
+
+	@include manageStylesFor(bigDesktop) {
+		// adjust 1rem to 12px. 12/16 =
+		font-size: 75%;
+	}
 }
 
 body {

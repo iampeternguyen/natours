@@ -13,3 +13,41 @@
 
 	transform: translate(-50%, -50%);
 }
+
+/*
+	Pixels
+	0-600: 			Phone -> phone
+	600-900:		Tablet portrait -> tablet
+	900-1200:		Tablet landscape -> tabletLandscape
+	1200-1800:	desktop [normal styles]
+	1800+				Big desktop -> bigDesktop
+
+	Here we'll use em because we want to respond to user browser font size settings
+
+	How to make the website responsive?
+	base + typography > general layout + grid > page layout > components
+
+*/
+
+@mixin manageStylesFor($breakpoint) {
+	@if $breakpoint == phone {
+		@media (max-width: 37.5em) {
+			@content;
+		}
+	}
+	@if $breakpoint == tablet {
+		@media (max-width: 56.25em) {
+			@content;
+		}
+	}
+	@if $breakpoint == tabletLandscape {
+		@media (max-width: 75em) {
+			@content;
+		}
+	}
+	@if $breakpoint == bigDesktop {
+		@media (min-width: 112.5em) {
+			@content;
+		}
+	}
+}
