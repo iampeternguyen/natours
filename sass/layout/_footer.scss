@@ -3,9 +3,16 @@
 	padding: 10rem 0;
 	font-size: 1.4rem;
 
+	@include manageStylesFor(tablet) {
+		padding: 8rem 0;
+	}
+
 	&__logo-box {
 		text-align: center;
 		margin-bottom: 8rem;
+		@include manageStylesFor(tablet) {
+			margin-bottom: 5rem;
+		}
 	}
 
 	&__logo {
@@ -17,6 +24,11 @@
 		border-top: 1px solid $color-grey-dark;
 		padding-top: 2rem;
 		display: inline-block;
+
+		@include manageStylesFor(tablet) {
+			width: 100%;
+			text-align: center;
+		}
 	}
 
 	&__list {
@@ -57,5 +69,12 @@
 		color: $color-grey-light-1;
 		width: 80%;
 		float: right;
+
+		@include manageStylesFor(tablet) {
+			width: 100%;
+			float: none;
+			text-align: center;
+			border-top: none;
+		}
 	}
 }

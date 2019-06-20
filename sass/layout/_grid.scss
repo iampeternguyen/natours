@@ -2,8 +2,16 @@
 	max-width: $grid-width;
 	margin: 0 auto;
 
+	@include manageStylesFor(tabletLandscape) {
+		padding: 0 6rem;
+	}
+
 	&:not(:last-child) {
 		margin-bottom: $gutter-vertical;
+
+		@include manageStylesFor(tablet) {
+			margin-bottom: $gutter-vertical-small;
+		}
 	}
 
 	@include clearfix;
@@ -13,6 +21,14 @@
 
 		&:not(:last-child) {
 			margin-right: $gutter-horizontal;
+			@include manageStylesFor(tablet) {
+				margin-right: 0;
+				margin-bottom: $gutter-vertical-small;
+			}
+		}
+
+		@include manageStylesFor(tablet) {
+			width: 100% !important;
 		}
 	}
 
