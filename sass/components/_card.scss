@@ -155,7 +155,7 @@
 		font-weight: 100;
 	}
 
-	@include manageStylesFor(tablet) {
+	@media only screen and (max-width: 56.25em), only screen and (hover: none) {
 		height: auto;
 		border-radius: 0.3rem;
 		background-color: $color-white;
@@ -201,5 +201,9 @@
 	@include manageStylesFor(phone) {
 		margin: 0 auto;
 		width: 80vw;
+	}
+
+	@media only screen and (min-width: 56.26em) and (hover: none) {
+		max-width: 30rem;
 	}
 }
