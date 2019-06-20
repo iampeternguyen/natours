@@ -53,6 +53,12 @@
 	&__left {
 		width: 33.33333%;
 		display: table-cell;
+		@include manageStylesFor(tabletLandscape) {
+			width: 100%;
+			display: inline-block;
+			overflow: hidden;
+			text-align: center;
+		}
 	}
 
 	&__right {
@@ -60,11 +66,19 @@
 		display: table-cell;
 		vertical-align: middle;
 		padding: 3rem 5rem;
+		@include manageStylesFor(tabletLandscape) {
+			width: 100%;
+			display: inline-block;
+		}
 	}
 
 	&__image {
 		display: block;
 		width: 100%;
+		@include manageStylesFor(tabletLandscape) {
+			display: inline;
+			width: 49.5%;
+		}
 	}
 
 	&__text {
@@ -74,5 +88,8 @@
 		column-count: 2;
 		column-gap: 4rem;
 		column-rule: 1px solid $color-grey-light-2;
+		@include manageStylesFor(tabletLandscape) {
+			column-count: 1;
+		}
 	}
 }
